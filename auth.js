@@ -1,31 +1,43 @@
 function register(){
 
-let username=prompt("Enter username");
-let password=prompt("Enter password");
+let name = document.getElementById("name").value;
+let branch = document.getElementById("branch").value;
+let password = document.getElementById("password").value;
 
-localStorage.setItem("user",username);
-localStorage.setItem("pass",password);
+if(name === "" || branch === "" || password === ""){
+alert("Please fill all fields");
+return;
+}
 
-alert("Registered Successfully");
+let user = {
+name:name,
+branch:branch,
+password:password
+};
+
+localStorage.setItem("user", JSON.stringify(user));
+
+alert("Registration Successful!");
+
+window.location.href = "dashboard.html";
 
 }
 
 function login(){
 
-let username=document.getElementById("username").value;
-let password=document.getElementById("password").value;
+let name = document.getElementById("name").value;
+let password = document.getElementById("password").value;
 
-let storedUser=localStorage.getItem("user");
-let storedPass=localStorage.getItem("pass");
+let storedUser = JSON.parse(localStorage.getItem("user"));
 
-if(username===storedUser && password===storedPass){
+if(storedUser && name === storedUser.name && password === storedUser.password){
 
-window.location="dashboard.html";
+window.location.href = "dashboard.html";
 
 }
 else{
 
-alert("Invalid login");
+alert("Invalid login details");
 
 }
 
