@@ -4,7 +4,7 @@ let name = document.getElementById("name").value;
 let branch = document.getElementById("branch").value;
 let password = document.getElementById("password").value;
 
-if(name === "" || branch === "" || password === ""){
+if(name==="" || branch==="" || password===""){
 alert("Please fill all fields");
 return;
 }
@@ -17,7 +17,7 @@ password:password
 
 localStorage.setItem("user", JSON.stringify(user));
 
-alert("Registration Successful!");
+alert("Registration successful!");
 
 window.location.href = "dashboard.html";
 
@@ -34,10 +34,9 @@ if(storedUser && name === storedUser.name && password === storedUser.password){
 
 window.location.href = "dashboard.html";
 
-}
-else{
+}else{
 
-alert("Invalid login details");
+alert("Wrong name or password");
 
 }
 
